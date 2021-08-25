@@ -32,11 +32,11 @@ jobs:
         run: yarn install
 
       # Installs client dev dependencies
-      - name: Install dev dependencies
+      - name: Install client dev dependencies
         run: cd client && yarn install
 
       # Installs server dev dependencies
-      - name: Install dev dependencies
+      - name: Install server dev dependencies
         run: cd server && yarn install
 
       # Runs prettier
