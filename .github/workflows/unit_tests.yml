@@ -32,15 +32,17 @@ jobs:
         run: yarn install
 
       # Installs client dev dependencies
-      - name: Install dev dependencies
+      - name: Install client dev dependencies
         run: cd client && yarn install
 
       # Installs server dev dependencies
-      - name: Install dev dependencies
+      - name: Install server dev dependencies
         run: cd server && yarn install
 
-      - name: Run build
+      # Run client build
+      - name: Run client build
         run: cd client && yarn run build --if-present
 
-      - name: Run tests
+      # Run client tests
+      - name: Run client tests
         run: cd client && yarn test
