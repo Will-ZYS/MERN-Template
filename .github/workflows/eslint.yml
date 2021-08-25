@@ -31,6 +31,14 @@ jobs:
       - name: Install dev dependencies
         run: yarn install
 
+      # Installs client dev dependencies
+      - name: Install dev dependencies
+        run: cd client && yarn install
+
+      # Installs server dev dependencies
+      - name: Install dev dependencies
+        run: cd server && yarn install
+
       # Runs ESLint
       - name: Run code style check
         run: yarn run lint

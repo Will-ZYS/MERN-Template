@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import { join } from "path";
 import connectToDatabase from "./db/db-connect";
+import routes from "./routes";
 
 // Setup Express
 const app = express();
@@ -12,7 +13,6 @@ app.use(express.json());
 app.use(cors());
 
 // Setup our routes.
-import routes from "./routes";
 app.use("/", routes);
 
 // Make the "public" folder available statically
@@ -26,12 +26,12 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static(express.join(__dirname, "../../frontend/build")));
 
   // If we get any GET request we can't process using one of the server routes, serve up index.html by default.
-  app.get("*", function (req, res) {
+  app.get("*", (req, res) => {
     res.sendFile(express.join(__dirname, "../../frontend/build/index.html"));
   });
 }
 
 // Start the DB running. Then, once it's connected, start the server.
-connectToDatabase().then(function () {
+connectToDatabase().then(() => {
   app.listen(port, () => console.log(`App server listening on port ${port}!`));
 });
